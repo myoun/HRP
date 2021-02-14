@@ -2,9 +2,7 @@ name: HRP
 main: $pluginMain
 version: $pluginVersion
 api-version: 1.16
-authors:
-  -명이
-  -Project_TL
+authors: [명이,Project_TL]
 
 commands:
   HR:

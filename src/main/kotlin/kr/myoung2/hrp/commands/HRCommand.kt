@@ -13,7 +13,7 @@ import org.projecttl.api.inventorygui.utils.CreateGUI
 class HRCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (!(sender is Player)) return false
+        if (sender !is Player) return false
         val HRGUI:CreateGUI = CreateGUI(27, "${ChatColor.RED}인간 ${ChatColor.BLUE}강화").let {
 
             it.setItem(ItemStack(Material.DIAMOND_SWORD),"${ChatColor.AQUA}날카로운 검",10)

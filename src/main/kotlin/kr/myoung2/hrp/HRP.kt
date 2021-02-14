@@ -10,7 +10,7 @@ class HRP : JavaPlugin(){
         getCommand("hr")?.setExecutor(HRCommand())
         super.onEnable()
 
-        TODO("Create Package and Make Event Listener")
+        // TODO("Create Package and Make Event Listener")
 
         /* TODO
             InventoryClickEvent
