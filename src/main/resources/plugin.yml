@@ -3,3 +3,8 @@ author : $pluginAuthor
 main: $pluginMain
 version: $pluginVersion
 api-version: 1.16
+
+commands:
+  HR:
+    aliases:
+      - hr
