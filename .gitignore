@@ -1,4 +1,3 @@
 build/*
 debug/*
-.gradle/6.3
-.gradle/buildOutputCleanup
+.gradle/*
