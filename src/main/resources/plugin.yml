@@ -1,0 +1,5 @@
+name: HRP
+author : $pluginAuthor
+main: $pluginMain
+version: $pluginVersion
+api-version: 1.16
