@@ -2,8 +2,8 @@ plugins {
     kotlin("jvm") version "1.4.30"
 }
 
-group = "kr.myoung2"
-version = "1.0.0"
+group = properties["pluginGroup"]!!
+version = properties["pluginVersion"]!!
 
 repositories {
     jcenter()
