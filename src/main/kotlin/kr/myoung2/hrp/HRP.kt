@@ -15,6 +15,8 @@ class HRP : JavaPlugin(){
 
     private var hrpFile: File? = null
     private var hrpConfiguration: FileConfiguration? = null
+    private var userFile: File? = null
+    private var userdataConfig: FileConfiguration? = null
 
     override fun onEnable() {
         load()
@@ -32,10 +34,10 @@ class HRP : JavaPlugin(){
     private fun load() {
         hrpFile = File(dataFolder, "hrpConfig.yml").also {
             if (!it.exists()) {
-                hrpConfiguration?.set("ProtectionEnchantLevel",2)
+                hrpConfiguration?.set("armor.enchantment.level",2)
+                hrpConfiguration?.set("sword.enchantment.level",2)
                 hrpConfiguration?.save(it)
             }
-
             hrpConfiguration?.load(it)
         }
         hrpConfiguration = YamlConfiguration.loadConfiguration(hrpFile!!)

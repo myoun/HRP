@@ -40,7 +40,7 @@ class HarderArmorListener(val plugin: HRP) : Listener {
         val item:Item = e.itemDrop
         val stack:ItemStack = item.itemStack
         val meta:ItemMeta = stack.itemMeta
-        val enchantLevel:Int = plugin.hrpConfig().getInt("ProtectionEnchantLevel")
+        val enchantLevel:Int = plugin.hrpConfig().getInt("armor.enchantment.level")
 
         if (!checkArmor(stack)) return
 
