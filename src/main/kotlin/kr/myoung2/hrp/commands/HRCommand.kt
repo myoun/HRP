@@ -42,7 +42,7 @@ class HRCommand(private val plugin: HRP) : CommandExecutor {
                     args.isNotEmpty() -> {
                         if (args[0].equals("config", ignoreCase = true)) {
                             if (args[1].equals("save", ignoreCase = true)) {
-                                plugin.hrpConfig().save(plugin.hrpFile!!)
+                                plugin.saveConfig()
                                 return true
                             }
                         }

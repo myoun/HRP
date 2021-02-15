@@ -15,17 +15,12 @@ class HRP : JavaPlugin(){
 
     private val manager = server.pluginManager
 
-    var hrpFile: File? = null
-    private var hrpConfiguration: FileConfiguration? = null
-    private var userFile: File? = null
-    private var userdataConfig: FileConfiguration? = null
-
     override fun onEnable() {
-        load()
-
+        config.addDefault("armor.enchantment.level",2)
+        config.addDefault("sword.enchantment.level",2)
         getCommand("hr")?.setExecutor(HRCommand(this))
         getCommand("hr")?.tabCompleter = ArgumentForHRCommand()
-
+        saveConfig()
         manager.registerEvents(GUIClickedListener(this), this)
         manager.registerEvents(HarderArmorListener(this),this)
         manager.registerEvents(SwordListener(this),this)
@@ -33,29 +28,11 @@ class HRP : JavaPlugin(){
     }
 
     override fun onDisable() {
+        saveConfig()
         super.onDisable()
     }
 
-    private fun load() {
-        hrpFile = File(dataFolder, "hrpConfig.yml").also {
-            if (!it.exists()) {
-                hrpConfiguration?.set("armor.enchantment.level",2)
-                hrpConfiguration?.set("sword.enchantment.level",2)
-                hrpConfiguration?.save(it)
-
-                // This is debug
-                Void()
-            }
-            hrpConfiguration?.load(it)
-        }
-        hrpConfiguration = YamlConfiguration.loadConfiguration(hrpFile!!)
-    }
-
-    private fun save() {
-        hrpConfiguration?.save(hrpFile!!)
-    }
-
     fun hrpConfig(): FileConfiguration {
-        return hrpConfiguration!!
+        return config
     }
 }
