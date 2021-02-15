@@ -1,6 +1,7 @@
 package org.projecttl.plugin.hrp.listeners
 
 import kr.myoung2.hrp.commands.HRCommand
+import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -23,6 +24,10 @@ class GUIClickedListener: Listener {
                 }
 
                 HRCommand().ironChestPlate2 -> {
+                }
+
+                "${ChatColor.DARK_RED}Exit" -> {
+                    player.closeInventory()
                 }
             }
 

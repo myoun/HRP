@@ -6,14 +6,12 @@ import org.projecttl.plugin.hrp.listeners.GUIClickedListener
 
 class HRP : JavaPlugin(){
 
-    val manager = server.pluginManager
+    private val manager = server.pluginManager
 
     override fun onEnable() {
-        getCommand("HR")?.setExecutor(HRCommand())
-        getCommand("hr")?.setExecutor(HRCommand())
-
-        manager.registerEvents(GUIClickedListener(), this)
-
         super.onEnable()
+
+        getCommand("hr")?.setExecutor(HRCommand())
+        manager.registerEvents(GUIClickedListener(), this)
     }
 }

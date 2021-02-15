@@ -23,25 +23,26 @@ class HRCommand : CommandExecutor {
     /* end temporary variables */
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        if (sender !is Player) {
-            return false
-        } else {
+        if (sender is Player) {
             if (command.name == "hr") {
-                val hrgUI: CreateGUI = CreateGUI(27, inventoryName).let {
+                if (args.isNullOrEmpty()) {
+                    val hrgUI: CreateGUI = CreateGUI(27, inventoryName).let {
+                        it.setItem(ItemStack(Material.DIAMOND_SWORD), diamondSword, 10)
+                        it.setItem(ItemStack(Material.IRON_CHESTPLATE), ironChestPlate, 12)
+                        it.setItem(ItemStack(Material.GOLDEN_PICKAXE), goldenPickaxe, 14)
+                        it.setItem(ItemStack(Material.IRON_CHESTPLATE), ironChestPlate2, 16)
 
-                    it.setItem(ItemStack(Material.DIAMOND_SWORD), diamondSword, 10)
-                    it.setItem(ItemStack(Material.IRON_CHESTPLATE), ironChestPlate, 12)
-                    it.setItem(ItemStack(Material.GOLDEN_PICKAXE), goldenPickaxe, 14)
-                    it.setItem(ItemStack(Material.IRON_CHESTPLATE), ironChestPlate2, 16)
+                        it.setExitButton(22)
 
-                    it.setExitButton(22)
+                        it
+                    }
 
-                    it
+                    hrgUI.openInventory(sender)
+                    return true
                 }
-
-                hrgUI.openInventory(sender)
-                return true
             }
+        } else {
+            return true
         }
 
         return false
