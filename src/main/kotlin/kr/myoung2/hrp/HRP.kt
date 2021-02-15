@@ -17,11 +17,16 @@ class HRP : JavaPlugin(){
 
     override fun onEnable() {
         load()
-        super.onEnable()
-
+        hrpConfiguration.also {
+            save()
+            it?.addDefault("ProtectionEnchantLevel",2)
+            save()
+            it
+        }
         getCommand("hr")?.setExecutor(HRCommand())
         manager.registerEvents(GUIClickedListener(), this)
         manager.registerEvents(HarderArmorListener(this),this)
+        super.onEnable()
     }
 
     override fun onDisable() {
