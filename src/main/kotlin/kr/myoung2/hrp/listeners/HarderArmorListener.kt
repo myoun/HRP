@@ -19,7 +19,7 @@ class HarderArmorListener(private val plugin: HRP) : Listener {
         if (e.entityType != EntityType.PLAYER) return
         val item:Item = e.item
         val stack:ItemStack = item.itemStack
-        val enchantLevel:Int = plugin.hrpConfig().getInt("ProtectionEnchantLevel")
+        val enchantLevel:Int = plugin.config.getInt("armor.enchantment.level")
 
         if (!checkArmor(stack)) return
         if (stack.enchantments.containsKey(Enchantment.PROTECTION_ENVIRONMENTAL)){
@@ -31,7 +31,7 @@ class HarderArmorListener(private val plugin: HRP) : Listener {
             }
         }
 
-        stack.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,enchantLevel)
+        stack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL,enchantLevel)
         item.itemStack = stack
     }
 
