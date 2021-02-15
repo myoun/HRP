@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    implementation(kotlin("stdlib-jdk8"))
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     compileOnly("com.github.ProjectTL12345:InventoryGUI:2.0.0")
 }
@@ -28,6 +28,10 @@ tasks {
 
     compileJava {
         options.encoding = "UTF-8"
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
     }
 
     processResources {
