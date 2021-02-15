@@ -1,6 +1,7 @@
 package kr.myoung2.hrp
 
 import kr.myoung2.hrp.commands.HRCommand
+import kr.myoung2.hrp.listeners.HarderArmorListener
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
@@ -20,6 +21,7 @@ class HRP : JavaPlugin(){
 
         getCommand("hr")?.setExecutor(HRCommand())
         manager.registerEvents(GUIClickedListener(), this)
+        manager.registerEvents(HarderArmorListener(this),this)
     }
 
     override fun onDisable() {

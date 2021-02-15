@@ -12,14 +12,13 @@ import org.projecttl.api.inventorygui.utils.CreateGUI
 
 class HRCommand : CommandExecutor {
 
-    /* There is temporary variables please rename it TODO */
+
     val inventoryName: String = "${ChatColor.RED}인간 ${ChatColor.BLUE}강화"
 
     val diamondSword: String = "${ChatColor.AQUA}날카로운 검"
     val ironChestPlate: String = "${ChatColor.AQUA}단단한 갑옷"
     val goldenPickaxe: String = "${ChatColor.GOLD}빠른 곡괭이"
     val leatherBoots: String = "${ChatColor.GREEN}빠른 발걸음"
-    /* end temporary variables */
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (sender is Player) {
