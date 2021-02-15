@@ -26,7 +26,7 @@ class HRP : JavaPlugin(){
         getCommand("hr")?.setExecutor(HRCommand(this))
         getCommand("hr")?.tabCompleter = ArgumentForHRCommand()
 
-        manager.registerEvents(GUIClickedListener(), this)
+        manager.registerEvents(GUIClickedListener(this), this)
         manager.registerEvents(HarderArmorListener(this),this)
         manager.registerEvents(SwordListener(this),this)
         super.onEnable()

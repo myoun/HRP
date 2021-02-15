@@ -1,29 +1,30 @@
 package org.projecttl.plugin.hrp.listeners
 
+import kr.myoung2.hrp.HRP
 import kr.myoung2.hrp.commands.HRCommand
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 
-class GUIClickedListener: Listener {
+class GUIClickedListener(private val plugin: HRP): Listener {
 
     @EventHandler
     fun guiClickedEvent(event: InventoryClickEvent) {
         val player = event.whoClicked
 
-        if (event.view.title.equals(HRCommand().inventoryName, ignoreCase = true)) {
+        if (event.view.title.equals(HRCommand(plugin).inventoryName, ignoreCase = true)) {
             when (event.currentItem?.itemMeta?.displayName) {
-                HRCommand().diamondSword -> {
+                HRCommand(plugin).diamondSword -> {
                 }
 
-                HRCommand().ironChestPlate -> {
+                HRCommand(plugin).ironChestPlate -> {
                 }
 
-                HRCommand().goldenPickaxe -> {
+                HRCommand(plugin).goldenPickaxe -> {
                 }
 
-                HRCommand().leatherBoots -> {
+                HRCommand(plugin).leatherBoots -> {
                 }
 
                 "${ChatColor.DARK_RED}Exit" -> {
