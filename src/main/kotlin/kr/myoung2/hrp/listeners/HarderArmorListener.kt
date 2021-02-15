@@ -16,23 +16,17 @@ class HarderArmorListener(val plugin: HRP) : Listener {
 
     @EventHandler
     fun onPlayerGetArmor(e:EntityPickupItemEvent) {
-        println("와")
         if (e.entityType != EntityType.PLAYER) return
-        println("와2")
         val item:Item = e.item
         val stack:ItemStack = item.itemStack
         val enchantLevel:Int = plugin.hrpConfig().getInt("ProtectionEnchantLevel")
 
         if (!checkArmor(stack)) return
-        println("와3")
         if (stack.enchantments.containsKey(Enchantment.PROTECTION_ENVIRONMENTAL)){
-            println("와4")
             if (stack.enchantments[Enchantment.PROTECTION_ENVIRONMENTAL]!! > enchantLevel){
-                println(stack.enchantments[Enchantment.PROTECTION_ENVIRONMENTAL])
                 return
             }
             else {
-                println(stack.enchantments[Enchantment.PROTECTION_ENVIRONMENTAL])
                 stack.removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL)
             }
         }
@@ -43,7 +37,6 @@ class HarderArmorListener(val plugin: HRP) : Listener {
 
     @EventHandler
     fun onPlayerDropArmor(e:PlayerDropItemEvent){
-        println("와")
         val item:Item = e.itemDrop
         val stack:ItemStack = item.itemStack
         val meta:ItemMeta = stack.itemMeta
