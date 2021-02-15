@@ -18,8 +18,7 @@ class HRCommand : CommandExecutor {
     val diamondSword: String = "${ChatColor.AQUA}날카로운 검"
     val ironChestPlate: String = "${ChatColor.AQUA}단단한 갑옷"
     val goldenPickaxe: String = "${ChatColor.GOLD}빠른 곡괭이"
-    val ironChestPlate2: String = "${ChatColor.AQUA}단단해진 갑옷"
-
+    val leatherBoots: String = "${ChatColor.GREEN}빠른 발걸음"
     /* end temporary variables */
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
@@ -30,8 +29,7 @@ class HRCommand : CommandExecutor {
                         it.setItem(ItemStack(Material.DIAMOND_SWORD), diamondSword, 10)
                         it.setItem(ItemStack(Material.IRON_CHESTPLATE), ironChestPlate, 12)
                         it.setItem(ItemStack(Material.GOLDEN_PICKAXE), goldenPickaxe, 14)
-                        it.setItem(ItemStack(Material.IRON_CHESTPLATE), ironChestPlate2, 16)
-
+                        it.setItem(ItemStack(Material.LEATHER_BOOTS), leatherBoots,16)
                         it.setExitButton(22)
 
                         it
