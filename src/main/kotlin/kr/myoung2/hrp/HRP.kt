@@ -5,6 +5,8 @@ import kr.myoung2.hrp.listeners.HarderArmorListener
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
+import org.projecttl.plugin.hrp.commands.Void
+import org.projecttl.plugin.hrp.commands.arguments.ArgumentForHRCommand
 import org.projecttl.plugin.hrp.listeners.GUIClickedListener
 import org.projecttl.plugin.hrp.listeners.SwordListener
 import java.io.File
@@ -13,14 +15,17 @@ class HRP : JavaPlugin(){
 
     private val manager = server.pluginManager
 
-    private var hrpFile: File? = null
+    var hrpFile: File? = null
     private var hrpConfiguration: FileConfiguration? = null
     private var userFile: File? = null
     private var userdataConfig: FileConfiguration? = null
 
     override fun onEnable() {
         load()
-        getCommand("hr")?.setExecutor(HRCommand())
+
+        getCommand("hr")?.setExecutor(HRCommand(this))
+        getCommand("hr")?.tabCompleter = ArgumentForHRCommand()
+
         manager.registerEvents(GUIClickedListener(), this)
         manager.registerEvents(HarderArmorListener(this),this)
         manager.registerEvents(SwordListener(this),this)
@@ -37,6 +42,9 @@ class HRP : JavaPlugin(){
                 hrpConfiguration?.set("armor.enchantment.level",2)
                 hrpConfiguration?.set("sword.enchantment.level",2)
                 hrpConfiguration?.save(it)
+
+                // This is debug
+                Void()
             }
             hrpConfiguration?.load(it)
         }

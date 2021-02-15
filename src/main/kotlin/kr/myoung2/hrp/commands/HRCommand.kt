@@ -1,5 +1,6 @@
 package kr.myoung2.hrp.commands
 
+import kr.myoung2.hrp.HRP
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.command.Command
@@ -9,7 +10,7 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.projecttl.api.inventorygui.utils.CreateGUI
 
-class HRCommand : CommandExecutor {
+class HRCommand(private val plugin: HRP) : CommandExecutor {
 
 
     val inventoryName: String = "${ChatColor.RED}인간 ${ChatColor.BLUE}강화"
@@ -22,19 +23,30 @@ class HRCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (sender is Player) {
             if (command.name == "hr") {
-                if (args.isNullOrEmpty()) {
-                    val hrgUI: CreateGUI = CreateGUI(27, inventoryName).let {
-                        it.setItem(ItemStack(Material.DIAMOND_SWORD), diamondSword, 10)
-                        it.setItem(ItemStack(Material.IRON_CHESTPLATE), ironChestPlate, 12)
-                        it.setItem(ItemStack(Material.GOLDEN_PICKAXE), goldenPickaxe, 14)
-                        it.setItem(ItemStack(Material.LEATHER_BOOTS), leatherBoots,16)
-                        it.setExitButton(22)
+                when {
+                    args.isNullOrEmpty() -> {
+                        val hrgUI: CreateGUI = CreateGUI(27, inventoryName).let {
+                            it.setItem(ItemStack(Material.DIAMOND_SWORD), diamondSword, 10)
+                            it.setItem(ItemStack(Material.IRON_CHESTPLATE), ironChestPlate, 12)
+                            it.setItem(ItemStack(Material.GOLDEN_PICKAXE), goldenPickaxe, 14)
+                            it.setItem(ItemStack(Material.LEATHER_BOOTS), leatherBoots,16)
+                            it.setExitButton(22)
 
-                        it
+                            it
+                        }
+
+                        hrgUI.openInventory(sender)
+                        return true
                     }
 
-                    hrgUI.openInventory(sender)
-                    return true
+                    args.isNotEmpty() -> {
+                        if (args[0].equals("config", ignoreCase = true)) {
+                            if (args[1].equals("save", ignoreCase = true)) {
+                                plugin.hrpConfig().save(plugin.hrpFile!!)
+                                return true
+                            }
+                        }
+                    }
                 }
             }
         } else {
