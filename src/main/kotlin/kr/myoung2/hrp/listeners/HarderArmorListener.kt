@@ -12,7 +12,7 @@ import org.bukkit.event.player.PlayerDropItemEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 
-class HarderArmorListener(val plugin: HRP) : Listener {
+class HarderArmorListener(private val plugin: HRP) : Listener {
 
     @EventHandler
     fun onPlayerGetArmor(e:EntityPickupItemEvent) {
