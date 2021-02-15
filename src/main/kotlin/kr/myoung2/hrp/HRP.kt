@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import org.projecttl.plugin.hrp.listeners.GUIClickedListener
+import org.projecttl.plugin.hrp.listeners.SwordListener
 import java.io.File
 
 class HRP : JavaPlugin(){
@@ -17,26 +18,21 @@ class HRP : JavaPlugin(){
 
     override fun onEnable() {
         load()
-        hrpConfiguration.also {
-            save()
-            it?.addDefault("ProtectionEnchantLevel",2)
-            save()
-            it
-        }
         getCommand("hr")?.setExecutor(HRCommand())
         manager.registerEvents(GUIClickedListener(), this)
         manager.registerEvents(HarderArmorListener(this),this)
+        manager.registerEvents(SwordListener(this),this)
         super.onEnable()
     }
 
     override fun onDisable() {
-        save()
         super.onDisable()
     }
 
     private fun load() {
         hrpFile = File(dataFolder, "hrpConfig.yml").also {
             if (!it.exists()) {
+                hrpConfiguration?.set("ProtectionEnchantLevel",2)
                 hrpConfiguration?.save(it)
             }
 
