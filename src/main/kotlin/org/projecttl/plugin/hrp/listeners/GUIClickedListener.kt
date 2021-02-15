@@ -23,7 +23,7 @@ class GUIClickedListener: Listener {
                 HRCommand().goldenPickaxe -> {
                 }
 
-                HRCommand().ironChestPlate2 -> {
+                HRCommand().leatherBoots -> {
                 }
 
                 "${ChatColor.DARK_RED}Exit" -> {
