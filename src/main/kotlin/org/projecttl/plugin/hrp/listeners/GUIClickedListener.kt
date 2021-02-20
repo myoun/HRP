@@ -6,6 +6,8 @@ import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
 
 class GUIClickedListener(private val plugin: HRP): Listener {
 
@@ -22,6 +24,7 @@ class GUIClickedListener(private val plugin: HRP): Listener {
                 }
 
                 HRCommand(plugin).goldenPickaxe -> {
+                    player.addPotionEffect(PotionEffect(PotionEffectType.FAST_DIGGING,1000000,2,false,false,true))
                 }
 
                 HRCommand(plugin).leatherBoots -> {
